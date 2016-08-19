@@ -1,0 +1,2 @@
+Implementacion 1 
+Usando reglas de multiplicacion para clasificar oraciones
