@@ -1,0 +1,16 @@
+textos:
+
+TWAIN.txt
+texto: http://textfiles.com/etext/AUTHORS/TWAIN/onanism.txt
+
+motivational.txt
+texto: Motivational Phrases
+
+tsukitsuki
+texto: Tsuki Tsuki Vol 11
+
+HP.txt
+texto: Harry Potter and the Philosofer Stone
+
+libro2.txt
+texto: https://www.gutenberg.org/ebooks/11041
