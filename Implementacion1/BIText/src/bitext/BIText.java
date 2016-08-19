@@ -31,7 +31,7 @@ public class BIText {
         String txt="";
 
         
-        
+        /*Lector de archivos, se debe cambiar la direccion donde se encuentre el txt que desee clasificar*/
         BufferedReader br = null;
         try {
             //br = new BufferedReader(new FileReader("C:\\Users\\Lein\\Documents\\BI\\twain.txt"));
@@ -51,7 +51,8 @@ public class BIText {
             }
             
        
-
+    /*Lector de las lista de Verbos Positivos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/
         String[] verbp= new String[5000];
         int a = 0;
      try {
@@ -67,11 +68,9 @@ public class BIText {
                 Logger.getLogger(BIText.class.getName()).log(Level.SEVERE, null, ex);
             }   
        
-        /*for(int y = 0; y < a; y++)
-        {
-            System.out.println(verbp[y]);
-        }*/
-        
+       
+       /*Lector de las lista de Verbos Negativos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/ 
         String[] verbn= new String[5000];
         int b = 0;
      try {
@@ -87,11 +86,9 @@ public class BIText {
                 Logger.getLogger(BIText.class.getName()).log(Level.SEVERE, null, ex);
             }   
        
-        /*for(int y = 0; y < b; y++)
-        {
-            System.out.println(verbn[y]);
-        }*/
         
+        /*Lector de las lista de Adjetivos Negativos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/
         String[] adjn= new String[5000];
         int c = 0;
      try {
@@ -107,11 +104,9 @@ public class BIText {
                 Logger.getLogger(BIText.class.getName()).log(Level.SEVERE, null, ex);
             }   
        
-        /*for(int y = 0; y < c; y++)
-        {
-            System.out.println(adjn[y]);
-        }*/
         
+        /*Lector de las lista de Adjetivos Positivos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/
         String[] adjp= new String[5000];
         int d = 0;
      try {
@@ -126,13 +121,8 @@ public class BIText {
                 }       } catch (IOException ex) {
                 Logger.getLogger(BIText.class.getName()).log(Level.SEVERE, null, ex);
             }   
-       
-        /*for(int y = 0; y < d; y++)
-        {
-            System.out.println(adjp[y]);
-        }*/
-        
-        
+     
+        /*Separador de las oraciones del texto por token "."*/
         int i = 0;
         String aux = "";
         StringTokenizer st = new StringTokenizer(txt, ".");
@@ -148,16 +138,6 @@ public class BIText {
 
         }
         
-        /* r = 0;
-        String[] oraciones2 = new String[1000];
-        
-            String example = oraciones[1];
-            //System.out.println(example.substring(example.lastIndexOf("\"") + 1))
-        }
-         
-         //example.indexOf("\"");
-         //System.out.println(example.indexOf("\""));
-         */
         
         String[] splitted;
         boolean search;
@@ -178,7 +158,8 @@ public class BIText {
         int asd = 1;
         
         
-        
+        /*Clasificador: Por cada palabra en la lista encontrada en cada oración se añade al String sign el char + 
+        si se halla un verbo o adjetivo positivo o un - si se encuentran verbos o adjetivos negativos*/
         for(int r=0; r<i; r++)
         {
             for(int f=0; f<a; f++)
@@ -232,6 +213,7 @@ public class BIText {
                 
             }
             
+            /*Si no se hallan verbos o adjetivos se clasifica como neutro*/
             if(vp == 0 && vn == 0 && an == 0 && ap == 0)
             {
                 clase = "neutro";
@@ -239,6 +221,8 @@ public class BIText {
             }
             else
             {
+                /*Dentro de los signos guardo en una variable int los valores de la cadena sign, calculo para ver si este 
+                 es positivo o negativo, dependiendo del resultado determino la clase*/
                 for(int x = 0; x<sign.length();x++)
                 {
                     num = sign.charAt(x);
@@ -262,11 +246,10 @@ public class BIText {
                 }
             }
             
-            
-            //System.err.println(oraciones[r] + "\n" + vp + " " + vn + " " + an + " " + ap + "\n" + vvp + " " + vvn + " " + aan + " " + aap);
-            //Resp[r] = vp + "," + vn + "," + an + "," + ap + "," + sign + "," + asd + "," + clase;
+          
             Resp[r] = vp + "," + vn + "," + an + "," + ap + "," + clase;
             
+            /*Reiniciar Variables*/
             vp = 0;
             vn = 0;
             an = 0;
@@ -278,15 +261,9 @@ public class BIText {
             
         }
          
+       
         
-        /*for(int j = 0; j<i; j++)
-        {
-            System.out.println("\nOracion "+ (j+1) + "\n" + oraciones[j]);
-        }*/
-        
-
-        
-        
+     /*Genero los datos del arff*/
         String lel = "@RELATION value\n\n"
                 + "@ATTRIBUTE positiveverb REAL\n"
                 + "@ATTRIBUTE negativeverb REAL\n"
@@ -302,14 +279,9 @@ public class BIText {
         
         System.out.println(lel);
         
-        /*for(int h = 0; h<i; h++)
-        {
-            System.out.println("oracion");
-            System.out.println(oraciones[h]);
-        }*/
         
-        
-        
+        /*Guardo los datos en el arff, se cambia dirección y nombre del archivo, se recomienda crear un arff en blanco en 
+         en el directorio recomendado antes*/
         BufferedWriter outputWriter = null;
         try {
             //outputWriter = new BufferedWriter(new FileWriter("C:\\Users\\Lein\\Documents\\BI\\Test1\\separado.arff"));
