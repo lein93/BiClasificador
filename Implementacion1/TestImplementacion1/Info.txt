@@ -1,0 +1,16 @@
+Modelos de los textos:
+
+separado.arff
+texto: http://textfiles.com/etext/AUTHORS/TWAIN/onanism.txt
+
+Test2
+texto: Motivational Phrases
+
+Test3
+texto: Tsuki Tsuki Vol 11
+
+Test4
+texto: Harry Potter and the Philosofer Stone
+
+TestFin
+texto: https://www.gutenberg.org/ebooks/11041
