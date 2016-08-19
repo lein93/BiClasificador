@@ -10,4 +10,6 @@ El codigo del proyecto debe ser descargado y compilado en un IDE de JAVA, si se 
 
 En el codigo se deben cambiar las direcciones donde se desean leer los archivos txt a clasificar y escribir los archivos modelos arff.
 
+Ya clasificado se puede comprobar haciendo el cross-validate en el explorador de WEKA.
+
 
