@@ -1,0 +1,2 @@
+Implementacion 2
+Usando contadores de positivo y negativo para determinar la clase
