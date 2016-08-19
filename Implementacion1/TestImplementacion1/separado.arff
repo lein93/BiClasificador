@@ -1,0 +1,53 @@
+@RELATION value
+
+@ATTRIBUTE positiveverb REAL
+@ATTRIBUTE negativeverb REAL
+@ATTRIBUTE negativeadjective REAL
+@ATTRIBUTE positiveadjective REAL
+@ATTRIBUTE class {positive, negative, neutro}
+
+@DATA
+1,0,0,1,positive
+1,0,0,0,positive
+1,0,0,0,positive
+1,1,0,0,negative
+0,1,1,0,positive
+0,1,0,0,negative
+1,0,0,1,positive
+0,1,0,1,negative
+0,0,0,0,neutro
+0,0,0,1,positive
+0,1,1,0,positive
+0,0,0,0,neutro
+0,0,0,0,neutro
+0,0,0,1,positive
+0,0,0,0,neutro
+0,1,0,0,negative
+0,0,0,0,neutro
+1,0,0,0,positive
+1,0,0,0,positive
+0,0,0,0,neutro
+0,0,0,0,neutro
+1,1,0,0,negative
+1,0,0,0,positive
+0,0,0,0,neutro
+0,0,0,0,neutro
+0,1,0,0,negative
+0,0,0,0,neutro
+0,0,0,0,neutro
+0,0,0,0,neutro
+0,0,0,0,neutro
+1,0,0,1,positive
+0,0,0,0,neutro
+0,2,0,0,positive
+0,0,0,0,neutro
+0,0,0,0,neutro
+0,1,0,0,negative
+0,0,0,1,positive
+0,0,0,0,neutro
+0,0,0,1,positive
+1,0,2,0,positive
+0,0,0,0,neutro
+0,0,0,0,neutro
+0,2,0,0,positive
+
