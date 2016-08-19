@@ -31,7 +31,7 @@ public class BIText2 {
         String txt="";
 
         
-        
+        /*Lector del archivo txt a clasificar, cambiar la dirección donde se encuentre el archivo*/
         BufferedReader br = null;
         try {
             //br = new BufferedReader(new FileReader("C:\\Users\\Lein\\Documents\\BI\\twain.txt"));
@@ -51,7 +51,8 @@ public class BIText2 {
             }
             
        
-
+     /*Lector de las lista de Verbos Positivos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/
         String[] verbp= new String[5000];
         int a = 0;
      try {
@@ -67,11 +68,9 @@ public class BIText2 {
                 Logger.getLogger(BIText2.class.getName()).log(Level.SEVERE, null, ex);
             }   
        
-        /*for(int y = 0; y < a; y++)
-        {
-            System.out.println(verbp[y]);
-        }*/
-        
+       
+       /*Lector de las lista de Verbos Negativos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/ 
         String[] verbn= new String[5000];
         int b = 0;
      try {
@@ -86,11 +85,8 @@ public class BIText2 {
                 Logger.getLogger(BIText2.class.getName()).log(Level.SEVERE, null, ex);
             }   
        
-        /*for(int y = 0; y < b; y++)
-        {
-            System.out.println(verbn[y]);
-        }*/
-        
+        /*Lector de las lista de Adjetivo Negativos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/
         String[] adjn= new String[5000];
         int c = 0;
      try {
@@ -106,11 +102,8 @@ public class BIText2 {
                 Logger.getLogger(BIText2.class.getName()).log(Level.SEVERE, null, ex);
             }   
        
-        /*for(int y = 0; y < c; y++)
-        {
-            System.out.println(adjn[y]);
-        }*/
-        
+        /*Lector de las lista de Adjetivos Positivos se debe cambiar la direccion donde se encuentre el archivo verPositivo.txt
+     se puede descargar elm archivo en el directorio ListasVerbosAdjetivos en GitHub*/
         String[] adjp= new String[5000];
         int d = 0;
      try {
@@ -126,16 +119,9 @@ public class BIText2 {
                 Logger.getLogger(BIText2.class.getName()).log(Level.SEVERE, null, ex);
             }   
        
-        /*for(int y = 0; y < d; y++)
-        {
-            System.out.println(adjp[y]);   
        
-        /*for(int y = 0; y < d; y++)
-        {
-            System.out.println(adjp[y]);
-        }*/
         
-        
+       /*Separador de oraciones del txt a clasificar por medio del token "."*/ 
         int i = 0;
         String aux = "";
         StringTokenizer st = new StringTokenizer(txt, ".");
@@ -151,16 +137,7 @@ public class BIText2 {
 
         }
         
-        /* r = 0;
-        String[] oraciones2 = new String[1000];
         
-            String example = oraciones[1];
-            //System.out.println(example.substring(example.lastIndexOf("\"") + 1))
-        }
-         
-         //example.indexOf("\"");
-         //System.out.println(example.indexOf("\""));
-         */
         
         String[] splitted;
         boolean search;
@@ -182,7 +159,8 @@ public class BIText2 {
         int negative = 0;
         
         
-        
+        /*Implementacion 2: Se ca añadiendo un contador de positivos y negativos cada vez que encuentra una coincidencia 
+         dentro de cada oración*/
         for(int r=0; r<i; r++)
         {
             for(int f=0; f<a; f++)
@@ -236,6 +214,7 @@ public class BIText2 {
                 
             }
             
+            /*Si no se encuentran coincidencias dentro de las oraciones se la clasifica como neutra*/
             if(vp == 0 && vn == 0 && an == 0 && ap == 0)
             {
                 clase = "neutro";
@@ -244,7 +223,8 @@ public class BIText2 {
             }
             else
             {
-                
+                /*Compara el numero de positivos con negativos, se clasifica con el resultado mayor, 
+                REGLA ESPECIAL: Si hay el mismo numero de positivos y negativos se la marca como negativo*/
                 if(positive > negative)
                 {
                     clase = "positive";
@@ -260,10 +240,10 @@ public class BIText2 {
             }
             
             
-            //System.err.println(oraciones[r] + "\n" + vp + " " + vn + " " + an + " " + ap + "\n" + vvp + " " + vvn + " " + aan + " " + aap);
-            //Resp[r] = vp + "," + vn + "," + an + "," + ap + "," + sign + "," + asd + "," + clase;
+            //Guardar Resultados
             Resp[r] = vp + "," + vn + "," + an + "," + ap + "," + clase;
             
+            //Reiniciar Variables auxiliares
             vp = 0;
             vn = 0;
             an = 0;
@@ -276,14 +256,11 @@ public class BIText2 {
         }
          
         
-        /*for(int j = 0; j<i; j++)
-        {
-            System.out.println("\nOracion "+ (j+1) + "\n" + oraciones[j]);
-        }*/
+      
         
 
         
-        
+      //Crear Datos del arrf  
         String lel = "@RELATION value\n\n"
                 + "@ATTRIBUTE positiveverb REAL\n"
                 + "@ATTRIBUTE negativeverb REAL\n"
@@ -299,14 +276,10 @@ public class BIText2 {
         
         System.out.println(lel);
         
-        /*for(int h = 0; h<i; h++)
-        {
-            System.out.println("oracion");
-            System.out.println(oraciones[h]);
-        }*/
+       
         
-        
-        
+       /*Se Guardadn los datos del srff en un archivo, se recomienda crear un archivo arff en blanco antes de correr el 
+        programa, cambiar la direccion del directorio donde se encuentra el archivo*/ 
         BufferedWriter outputWriter = null;
         try {
             //outputWriter = new BufferedWriter(new FileWriter("C:\\Users\\Lein\\Documents\\BI\\Test2\\separado.arff"));
